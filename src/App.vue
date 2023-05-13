@@ -11,7 +11,7 @@
 
 <script>
 import SplashScreen from '@/components/SplashScreen'
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, } from 'vue'
 
 export default {
   components: {
@@ -22,7 +22,7 @@ export default {
           resolve(require('@/components/Home'))
         }, 2500)
       })
-    ))
+    )),
   },
 }
 </script>
