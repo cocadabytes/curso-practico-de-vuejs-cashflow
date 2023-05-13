@@ -2,14 +2,13 @@ module.exports = {
   root: true,
   env: {
     node: true,
+    'vue/setup-compiler-macros': true,
   },
   extends: [
     'plugin:vue/vue3-essential',
     'eslint:recommended'
   ],
-  parserOptions: {
-    parser: '@babel/eslint-parser',
-  },
+  parserOptions: { parser: '@babel/eslint-parser', },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -30,12 +29,8 @@ module.exports = {
     'vue/max-attributes-per-line': [
       'error',
       {
-        singleline: {
-          max: 1,
-        },
-        multiline: {
-          max: 1,
-        },
+        singleline: { max: 1, },
+        multiline: { max: 1, },
       }
     ],
     'no-multiple-empty-lines': [
@@ -59,22 +54,18 @@ module.exports = {
     ],
     'vue/first-attribute-linebreak': [
       'error',
-      {
-        multiline: 'below',
-      }
+      { multiline: 'below', }
     ],
     'vue/html-closing-bracket-newline': [
       'error',
-      {
-        multiline: 'always',
-      }
+      { multiline: 'always', }
     ],
     'comma-dangle': [
       'error',
       {
         arrays: 'never',
         objects: 'always',
-        imports: 'never',
+        imports: 'always',
         exports: 'always',
         functions: 'never',
       }
@@ -98,13 +89,14 @@ module.exports = {
     ],
     'array-element-newline': [
       'error',
-      {
-        'ArrayExpression': 'always',
-      }
+      { 'ArrayExpression': 'always', }
     ],
     'array-bracket-newline': [
       'error',
-      { minItems: 2, multiline: true, }
+      {
+        minItems: 2,
+        multiline: true,
+      }
     ],
     'object-curly-spacing': [
       'error',
@@ -122,5 +114,40 @@ module.exports = {
       'error',
       'always'
     ],
+    // 'vue/padding-line-between-tags': [
+    //   'error',
+    //   [{ blankLine: 'always', prev: '*', next: '*', }]
+    // ],
+    'vue/padding-line-between-blocks': [
+      'error',
+      'always'
+    ],
+    'vue/no-setup-props-destructure': 'error',
+    'object-property-newline': [
+      'error',
+      { 'allowAllPropertiesOnSameLine': false, }
+    ],
+    'object-curly-newline': [
+      'error',
+      {
+        'ObjectExpression': {
+          'multiline': true,
+          'minProperties': 2,
+        },
+        'ObjectPattern': {
+          'multiline': true,
+          'minProperties': 2,
+        },
+        'ImportDeclaration': {
+          'multiline': true,
+          'minProperties': 2,
+        },
+        'ExportDeclaration': {
+          'multiline': true,
+          'minProperties': 3,
+        },
+      }
+    ],
+    'no-unused-vars': 1,
   },
 }
