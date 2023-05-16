@@ -1,7 +1,7 @@
 <template>
   <main>
     <p>{{ label }}</p>
-    <h1>{{ amountVisual }}</h1>
+    <h1>{{ amountCurrency }}</h1>
     <div class="graphic">
       <slot name="graphic"></slot>
     </div>
@@ -37,6 +37,14 @@ const {
 
 const amountVisual = computed(() => {
   return amount.value === null ? totalAmount.value : amount.value
+})
+
+const amountCurrency = computed(() => {
+  const formatter = new Intl.NumberFormat('es-MX', {
+    style: 'currency',
+    currency: 'MXN',
+  })
+  return formatter.format(amountVisual.value)
 })
 </script>
 
