@@ -20,7 +20,7 @@ export default {
       new Promise((resolve) => {
         setTimeout(() => {
           resolve(require('@/components/Home'))
-        }, 2500)
+        }, 1000)
       })
     )),
   },
