@@ -6,7 +6,10 @@
         v-for="movement in movements"
         :key="movement.id"
       >
-        <Movement :movement="movement" />
+        <Movement
+          :movement="movement"
+          @remove="remove"
+        />
       </div>
     </div>
   </div>
@@ -25,6 +28,13 @@ const props = defineProps({
 })
 
 const { movements, } = toRefs(props)
+
+const remove = (movementId) => {
+  // movements.value = movements.value.filter((movement) => {
+  //   return movement.id != movementId
+  // })
+  console.log(movementId)
+}
 </script>
 
 <style scoped>
