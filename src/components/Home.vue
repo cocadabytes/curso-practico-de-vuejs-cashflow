@@ -10,7 +10,9 @@
         :amount="10000"
       >
         <template #graphic></template>
-        <template #action></template>
+        <template #action>
+          <Action />
+        </template>
       </Resume>
     </template>
     <template #movements>
@@ -24,6 +26,7 @@ import Layout from '@/components/Layout'
 import Header from '@/components/Header'
 import Resume from '@/components/Resume'
 import Movements from '@/components/Movements'
+import Action from '@/components/Action'
 
 const movements = [
   {
