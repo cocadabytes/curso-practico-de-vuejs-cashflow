@@ -29,11 +29,13 @@ const props = defineProps({
 
 const { movements, } = toRefs(props)
 
+const emit = defineEmits(['remove'])
+
 const remove = (movementId) => {
   // movements.value = movements.value.filter((movement) => {
   //   return movement.id != movementId
   // })
-  console.log(movementId)
+  emit('remove', movementId)
 }
 </script>
 
