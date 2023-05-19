@@ -116,7 +116,13 @@ module.exports = {
     ],
     // 'vue/padding-line-between-tags': [
     //   'error',
-    //   [{ blankLine: 'always', prev: '*', next: '*', }]
+    //   [
+    //     {
+    //       blankLine: 'always',
+    //       prev: '*',
+    //       next: '*',
+    //     }
+    //   ]
     // ],
     'vue/padding-line-between-blocks': [
       'error',
