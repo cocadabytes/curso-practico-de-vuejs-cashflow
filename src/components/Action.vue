@@ -4,7 +4,68 @@
     <Modal
       v-show="showModal"
       @close="closeModal"
-    />
+    >
+      <form
+        action=""
+        @submit.prevent="submit"
+      >
+        <div class="field">
+          <label for="title">Titulo</label>
+          <input
+            type="text"
+            name="title"
+            v-model="title"
+          />
+        </div>
+        <div class="field">
+          <label for="amount">Monto</label>
+          <input
+            type="text"
+            name="amount"
+            v-model="amount"
+          />
+        </div>
+        <div class="field">
+          <label for="description">Descripcion</label>
+          <textarea
+            name="description"
+            id="movement-description"
+            cols="30"
+            rows="4"
+            v-model="description"
+          ></textarea>
+        </div>
+        <div class="field">
+          <label
+            class="radio-label"
+            for="movement_type"
+          >
+            <input
+              type="radio"
+              name="movement_type"
+              v-model="movementType"
+              value="Ingreso"
+            />
+            <span>Ingreso</span>
+          </label>
+          <label
+            class="radio-label"
+            for="movement_type"
+          >
+            <input
+              type="radio"
+              name="movement_type"
+              v-model="movementType"
+              value="Gasto"
+            />
+            <span>Gasto</span>
+          </label>
+        </div>
+        <div class="action">
+          <button>Agregar movimiento</button>
+        </div>
+      </form>
+    </Modal>
   </teleport>
 </template>
 
@@ -12,11 +73,36 @@
 import { ref, } from 'vue'
 import Modal from '@/components/Modal'
 
-
+// reactive variables
 const showModal = ref(false)
+const title = ref('')
+const amount = ref(0)
+const description = ref('')
+const movementType = ref('Ingreso')
 
+const emit = defineEmits(['create'])
+
+// functions
 const closeModal =() => {
   showModal.value = false
+}
+
+const resetForm = () => {
+  title.value = ''
+  description.value = ''
+  amount.value = 0
+}
+
+const submit = () => {
+  showModal.value = false
+  emit('create', {
+    title: title.value,
+    description: description.value,
+    amount: movementType.value === 'Ingreso' ? amount.value : -amount.value,
+    time: new Date(),
+    id: new Date() - 1,
+  })
+  resetForm()
 }
 </script>
 
